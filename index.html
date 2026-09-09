@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b6b3a">
+<title>COMITES 2026 &mdash; Pedido de inscrição eleitoral</title>
+<meta name="description" content="Preencha o formulário e gere o PDF pronto para enviar ao Consulado da Itália no Rio de Janeiro.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="flag" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero-in">
+    <p class="kicker">Eleições COM.IT.ES. 2026</p>
+    <h1>Pedido de inscrição na lista eleitoral</h1>
+    <p class="sub">Preencha os campos abaixo e baixe o PDF já preenchido, pronto para assinar e enviar ao Consulado Geral da Itália no Rio de Janeiro.</p>
+    <p class="deadline"><strong>Prazo final: 04/11/2026</strong></p>
+  </div>
+</header>
+
+<main>
+
+  <form id="form" novalidate>
+
+    <section class="card">
+      <h2><span class="n">1</span> Consulado</h2>
+      <p class="hint">Já vem preenchido para a jurisdição do Rio de Janeiro (RJ e ES). Só altere se o seu consulado for outro.</p>
+
+      <label class="field">
+        <span>Consulado destinatário <em>(All'Ambasciata/Consolato d'Italia in)</em></span>
+        <input id="consolatoTop" name="consolatoTop" value="RIO DE JANEIRO" autocomplete="off">
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span>COMITES de <em>(COMITES di)</em></span>
+          <input id="comites" name="comites" value="RJ/ES" autocomplete="off">
+        </label>
+        <label class="field">
+          <span>Circunscrição consular <em>(Consolato in)</em></span>
+          <input id="consolato" name="consolato" value="RIO DE JANEIRO" autocomplete="off">
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">2</span> Seus dados</h2>
+
+      <div class="row">
+        <label class="field">
+          <span>Nome <em>(Nome)</em> <b class="req">*</b></span>
+          <input id="nome" name="nome" required autocomplete="given-name" placeholder="GIULIA">
+        </label>
+        <label class="field">
+          <span>Sobrenome <em>(Cognome)</em> <b class="req">*</b></span>
+          <input id="cognome" name="cognome" required autocomplete="family-name" placeholder="GREGORIO CÓ">
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span>Data de nascimento <b class="req">*</b></span>
+          <input id="nascimento" name="nascimento" type="date" required>
+        </label>
+        <label class="field">
+          <span>Cidade de nascimento <b class="req">*</b></span>
+          <input id="cidadeNasc" name="cidadeNasc" required autocomplete="off" placeholder="VITÓRIA">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>País de nascimento <em>(Stato di nascita)</em> <b class="req">*</b></span>
+        <input id="paisNasc" name="paisNasc" value="BRASILE" required autocomplete="off">
+        <small>Em italiano, <em>Stato</em> quer dizer país. Quem nasceu no Brasil escreve BRASILE.</small>
+      </label>
+
+      <label class="field">
+        <span>Codice Fiscale <em>(não obrigatório)</em></span>
+        <input id="codiceFiscale" name="codiceFiscale" autocomplete="off" spellcheck="false">
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span>Telefone <b class="req">*</b></span>
+          <input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="+55 21 99999-9999">
+        </label>
+        <label class="field">
+          <span>E-mail <em>(não obrigatório)</em></span>
+          <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" placeholder="voce@email.com">
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">3</span> Endereço de residência</h2>
+      <p class="hint">É para este endereço que o envelope de votação será enviado. Ele deve ser o mesmo registrado no consulado ou no AIRE. Se for diferente, atualize seu cadastro pelo portal Fast&#8209;It.</p>
+
+      <div class="row row-8-2">
+        <label class="field">
+          <span>Rua / Avenida <em>(Via/Piazza)</em> <b class="req">*</b></span>
+          <input id="via" name="via" required autocomplete="address-line1" placeholder="RUA ALICE BUMACHAR NEFFA">
+        </label>
+        <label class="field">
+          <span>Número <b class="req">*</b></span>
+          <input id="numero" name="numero" required autocomplete="off" placeholder="153">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Complemento / Bairro <em>(opcional, entra junto da rua)</em></span>
+        <input id="complemento" name="complemento" autocomplete="address-line2" placeholder="APTO 302 - CENTRO">
+      </label>
+
+      <div class="row row-3">
+        <label class="field">
+          <span>Cidade <em>(Città)</em> <b class="req">*</b></span>
+          <input id="cidade" name="cidade" required autocomplete="address-level2" placeholder="VITÓRIA">
+        </label>
+        <label class="field">
+          <span>CEP <em>(CAP)</em> <b class="req">*</b></span>
+          <input id="cap" name="cap" required inputmode="numeric" autocomplete="postal-code" placeholder="29090-290">
+        </label>
+        <label class="field">
+          <span>País <em>(Stato)</em> <b class="req">*</b></span>
+          <input id="pais" name="pais" value="BRASILE" required autocomplete="country-name">
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">4</span> Local, data e assinatura</h2>
+
+      <div class="row">
+        <label class="field">
+          <span>Local <em>(Luogo)</em> <b class="req">*</b></span>
+          <input id="luogo" name="luogo" required autocomplete="off" placeholder="VITÓRIA">
+        </label>
+        <label class="field">
+          <span>Data <b class="req">*</b></span>
+          <input id="data" name="data" type="date" required>
+        </label>
+      </div>
+
+      <div class="field sig-field">
+        <span>Assinatura</span>
+        <small>Assine com o dedo ou com o mouse. Se preferir assinar à caneta, deixe em branco, imprima o PDF e assine no papel. A assinatura precisa ser igual à do documento de identidade que você vai anexar.</small>
+        <div class="sigwrap">
+          <canvas id="sig" width="1000" height="300" aria-label="Área de assinatura"></canvas>
+          <span class="sigline" aria-hidden="true"></span>
+          <span class="sigph" id="sigph">assine aqui</span>
+        </div>
+        <button type="button" class="btn ghost small" id="clearSig">Apagar assinatura</button>
+      </div>
+    </section>
+
+    <div id="alert" class="alert" hidden></div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary" id="gen">Gerar PDF preenchido</button>
+      <button type="button" class="btn ghost" id="reset">Limpar formulário</button>
+    </div>
+
+  </form>
+
+  <section class="card result" id="result" hidden>
+    <h2>PDF pronto</h2>
+    <p class="hint" id="resultName"></p>
+    <div class="actions">
+      <a class="btn primary" id="download" download>Baixar PDF</a>
+      <button type="button" class="btn" id="share" hidden>Compartilhar</button>
+      <a class="btn" id="mail" href="#">Abrir e-mail para o consulado</a>
+    </div>
+    <div class="preview" id="preview"></div>
+  </section>
+
+  <section class="card steps">
+    <h2>Como enviar</h2>
+    <ol>
+      <li>Baixe o PDF gerado e confira todos os dados.</li>
+      <li>Assine (na tela, antes de gerar, ou à caneta depois de imprimir).</li>
+      <li>Envie para <a href="mailto:riodejaneiro.elettorale@esteri.it">riodejaneiro.elettorale@esteri.it</a> junto com a cópia de um documento de identidade válido, brasileiro ou italiano, que contenha a sua assinatura.</li>
+      <li>Prazo final: <strong>04/11/2026</strong>.</li>
+      <li>Só quem pedir a inscrição por este formulário recebe as cédulas de votação em casa.</li>
+    </ol>
+    <p class="hint">Informações oficiais no <a href="https://consriodejaneiro.esteri.it/br/news/dal_consolato/2026/08/elezione-dei-comitati-degli-italiani-allestero-comites-2026-modalita-per-la-richiesta-di-iscrizione-nellelenco-elettorale/" target="_blank" rel="noopener">site do Consulado Geral da Itália no Rio de Janeiro</a>. Modelo original em branco: <a href="assets/modelo-original.pdf" download>baixar aqui</a>.</p>
+  </section>
+
+  <footer>
+    <p>Seus dados não saem do seu aparelho. O PDF é montado no próprio navegador, sem servidor e sem envio para terceiros.</p>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="assets/template.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

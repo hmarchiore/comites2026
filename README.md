@@ -49,6 +49,10 @@ Só quem pedir a inscrição por este formulário recebe as cédulas de votaçã
 
 [Informações oficiais do Consulado Geral da Itália no Rio de Janeiro](https://consriodejaneiro.esteri.it/br/news/dal_consolato/2026/08/elezione-dei-comitati-degli-italiani-allestero-comites-2026-modalita-per-la-richiesta-di-iscrizione-nellelenco-elettorale/)
 
+## Autoria
+
+Feito por **Helder J Marchiori**, do grupo de WhatsApp [Cidadania italiana – Consulado do RJ](https://chat.whatsapp.com/LZVokMqsJoc0cElzsx5xm0).
+
 ## Aviso
 
 Projeto independente, sem vínculo oficial com o Consulado ou com o COMITES. O modelo do PDF é o documento público distribuído pelo consulado.

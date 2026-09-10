@@ -100,6 +100,30 @@ input::placeholder{color:#a9b5ae}
 .steps ol{margin:8px 0 0;padding-left:20px}
 .steps li{margin-bottom:8px;font-size:15px}
 .steps a{color:var(--green-d)}
+/* escolha do consulado */
+.gate h2,.notice h2{display:block;font-size:19px;margin-bottom:4px}
+.choices{display:grid;gap:12px;margin-top:14px}
+@media(min-width:620px){.choices{grid-template-columns:1fr 1fr}}
+.choice{
+  display:flex;flex-direction:column;gap:6px;text-align:left;cursor:pointer;
+  background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px;
+  font:inherit;color:inherit;transition:border-color .15s, box-shadow .15s, transform .06s
+}
+.choice:hover{border-color:var(--green);box-shadow:0 0 0 3px rgba(11,107,58,.12)}
+.choice:active{transform:translateY(1px)}
+.ch-title{font-size:17px;font-weight:700;line-height:1.25}
+.ch-sub{font-size:14px;color:var(--muted)}
+.ch-cta{margin-top:6px;font-size:14px;font-weight:700;color:var(--green-d)}
+.ch-cta::after{content:" \2192"}
+.notice p{margin:10px 0;font-size:15px}
+.notice strong{white-space:nowrap}
+.switch{margin:14px 0 -2px}
+.linkbtn{
+  background:none;border:0;padding:6px 0;color:var(--muted);
+  font:600 14px/1 inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px
+}
+.linkbtn:hover{color:var(--green-d)}
+
 /* chamada do grupo de WhatsApp */
 .wa{
   display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:center;

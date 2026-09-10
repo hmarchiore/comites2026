@@ -15,12 +15,44 @@
   <div class="hero-in">
     <p class="kicker">Eleições COM.IT.ES. 2026</p>
     <h1>Pedido de inscrição na lista eleitoral</h1>
-    <p class="sub">Preencha os campos abaixo e baixe o PDF já preenchido, pronto para assinar e enviar ao Consulado Geral da Itália no Rio de Janeiro.</p>
+    <p class="sub">Preencha os campos abaixo e baixe o PDF já preenchido, pronto para assinar e enviar ao seu consulado.</p>
     <p class="deadline"><strong>Prazo final: 04/11/2026</strong></p>
   </div>
 </header>
 
 <main>
+
+  <section class="card gate" id="gate">
+    <h2>Qual é o seu consulado?</h2>
+    <p class="hint">O pedido vai para o consulado da sua circunscrição. Escolha para continuar.</p>
+    <div class="choices">
+      <button type="button" class="choice" data-go="rj">
+        <span class="ch-title">Consulado do Rio de Janeiro</span>
+        <span class="ch-sub">Para quem mora no Rio de Janeiro ou no Espírito Santo. COMITES RJ/ES.</span>
+        <span class="ch-cta">Preencher o formulário</span>
+      </button>
+      <button type="button" class="choice" data-go="outros">
+        <span class="ch-title">Outro consulado italiano</span>
+        <span class="ch-sub">São Paulo, Belo Horizonte, Curitiba, Porto Alegre, Recife, Salvador ou Brasília.</span>
+        <span class="ch-cta">Ver situação</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="card notice" id="unsupported" hidden>
+    <h2>Ainda não disponível para esse consulado</h2>
+    <p>No momento o sistema não foi configurado para os outros consulados italianos no Brasil. Ele gera o formulário apenas para a circunscrição do Rio de Janeiro, que atende o Rio de Janeiro e o Espírito Santo.</p>
+    <p>Se você tiver interesse na mesma solução para o seu consulado, entre em contato pelo telefone <strong>27&nbsp;99714&#8209;1599</strong> para o desenvolvimento.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://wa.me/5527997141599?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20formul%C3%A1rio%20do%20COMITES%202026%20para%20outro%20consulado." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="btn" href="tel:+5527997141599">Ligar para 27 99714-1599</a>
+      <button type="button" class="btn ghost" data-go="gate">Voltar</button>
+    </div>
+  </section>
+
+  <div id="rjflow" hidden>
+
+  <p class="switch"><button type="button" class="linkbtn" data-go="gate">&larr; Trocar consulado</button></p>
 
   <form id="form" novalidate>
 
@@ -186,6 +218,8 @@
     </ol>
     <p class="hint">Informações oficiais no <a href="https://consriodejaneiro.esteri.it/br/news/dal_consolato/2026/08/elezione-dei-comitati-degli-italiani-allestero-comites-2026-modalita-per-la-richiesta-di-iscrizione-nellelenco-elettorale/" target="_blank" rel="noopener">site do Consulado Geral da Itália no Rio de Janeiro</a>. Modelo original em branco: <a href="assets/modelo-original.pdf" download>baixar aqui</a>.</p>
   </section>
+
+  </div><!-- /rjflow -->
 
   <aside class="wa">
     <span class="wa-badge" aria-hidden="true">

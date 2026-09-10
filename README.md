@@ -4,6 +4,12 @@ Formulário web que preenche automaticamente o PDF oficial da *Domanda di iscriz
 
 A pessoa preenche um formulário em português, no celular ou no computador, e baixa o PDF já preenchido em letras maiúsculas, pronto para assinar e enviar por e-mail.
 
+## Escolha do consulado
+
+A primeira tela pergunta qual é o consulado. Quem escolhe **Rio de Janeiro** segue para o formulário completo. Quem escolhe **outro consulado italiano** recebe o aviso de que o sistema ainda não foi configurado para as demais circunscrições do Brasil, com o contato **27 99714-1599** para quem tiver interesse no desenvolvimento.
+
+Para atender um novo consulado, basta trocar os valores padrão dos três campos consulares e liberar a opção na tela de escolha. As coordenadas do PDF são as mesmas, porque o modelo oficial é único.
+
 ## Como funciona
 
 Tudo acontece no navegador. Não há servidor, banco de dados nem envio de dados para terceiros.

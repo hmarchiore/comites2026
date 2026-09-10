@@ -79,10 +79,14 @@
 
   function sizeCanvas() {
     var r = canvas.getBoundingClientRect();
+    // Enquanto o formulário está escondido o canvas não tem medida: mantém o que já existe.
+    if (!r.width || !r.height) return;
     var dpr = Math.min(window.devicePixelRatio || 1, 3);
+    var w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
+    if (w === canvas.width && h === canvas.height) return;
     var data = hasInk ? canvas.toDataURL() : null;
-    canvas.width = Math.round(r.width * dpr);
-    canvas.height = Math.round(r.height * dpr);
+    canvas.width = w;
+    canvas.height = h;
     ctx = canvas.getContext('2d');
     ctx.lineWidth = 2.4 * dpr;
     ctx.lineCap = 'round';
@@ -98,6 +102,7 @@
 
   canvas.addEventListener('pointerdown', function (e) {
     e.preventDefault();
+    if (!canvas.width) sizeCanvas();
     canvas.setPointerCapture(e.pointerId);
     drawing = true; last = pos(e);
     ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(last.x + 0.1, last.y); ctx.stroke();
@@ -118,6 +123,7 @@
     hasInk = false; canvas.parentNode.classList.remove('has-ink');
   });
   window.addEventListener('resize', sizeCanvas);
+  if (window.ResizeObserver) new ResizeObserver(sizeCanvas).observe(canvas);
 
   // Recorta o traço e devolve PNG com fundo transparente.
   function signaturePng() {
@@ -348,7 +354,23 @@
     save();
   });
 
+  /* ---------- escolha do consulado ---------- */
+
+  // 'gate' = escolha, 'rj' = formulário do Rio, 'outros' = aviso de indisponibilidade.
+  function screen(name, scroll) {
+    $('gate').hidden = name !== 'gate';
+    $('unsupported').hidden = name !== 'outros';
+    $('rjflow').hidden = name !== 'rj';
+    // O canvas só tem largura depois de aparecer na tela.
+    if (name === 'rj') sizeCanvas();
+    if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-go]'), function (el) {
+    el.addEventListener('click', function () { screen(el.getAttribute('data-go'), true); });
+  });
+
   load();
   defaults();
-  sizeCanvas();
+  screen('gate', false);
 })();

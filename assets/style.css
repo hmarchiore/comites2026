@@ -117,6 +117,13 @@ input::placeholder{color:#a9b5ae}
 .ch-cta::after{content:" \2192"}
 .notice p{margin:10px 0;font-size:15px}
 .notice strong{white-space:nowrap}
+.chosen{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin:16px 0 0;padding:12px 16px;border-radius:12px;
+  background:rgba(11,107,58,.07);border:1px solid rgba(11,107,58,.18)
+}
+.chosen-label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.chosen strong{display:block;font-size:15px;margin-top:2px}
 .switch{margin:14px 0 -2px}
 .linkbtn{
   background:none;border:0;padding:6px 0;color:var(--muted);

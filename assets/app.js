@@ -33,6 +33,18 @@
     luogoData:     { x: 106,   y: 164.7, w: 127, align: 'left'   }
   };
   var SIGN = { cx: 400, base: 166.5, w: 250, h: 34 };
+
+  /* Valores presos ao consulado escolhido na primeira tela. Para atender uma
+     nova circunscrição, basta acrescentar um perfil aqui e liberar a opção. */
+  var CONSULADOS = {
+    rj: {
+      rotulo: 'Rio de Janeiro · COMITES RJ/ES',
+      destinatario: 'RIO DE JANEIRO',
+      comites: 'RJ/ES',
+      circunscricao: 'RIO DE JANEIRO'
+    }
+  };
+  var consulado = CONSULADOS.rj;
   var BASE_SIZE = 11, MIN_SIZE = 6, LIFT = 1.8;
 
   var $ = function (id) { return document.getElementById(id); };
@@ -151,7 +163,7 @@
 
   /* ---------- formulário ---------- */
 
-  var REQUIRED = ['nome', 'cognome', 'nascimento', 'cidadeNasc', 'paisNasc', 'telefone', 'via', 'numero', 'cidade', 'cap', 'pais', 'luogo', 'data', 'consolatoTop', 'comites', 'consolato'];
+  var REQUIRED = ['nome', 'cognome', 'nascimento', 'cidadeNasc', 'paisNasc', 'telefone', 'via', 'numero', 'cidade', 'cap', 'pais', 'luogo', 'data'];
 
   function values() {
     var v = {};
@@ -207,7 +219,7 @@
     var nasc = brDate(v.nascimento), assin = brDate(v.data);
     var rua = up(v.via) + (v.complemento ? ', ' + up(v.complemento) : '');
 
-    draw(page, font, 'consolatoTop', up(v.consolatoTop));
+    draw(page, font, 'consolatoTop', consulado.destinatario);
     draw(page, font, 'nome', up(v.nome));
     draw(page, font, 'cognome', up(v.cognome));
     draw(page, font, 'dia', nasc.d);
@@ -218,8 +230,8 @@
     draw(page, font, 'codiceFiscale', up(v.codiceFiscale));
     draw(page, font, 'telefone', v.telefone);
     draw(page, font, 'email', v.email);
-    draw(page, font, 'comites', up(v.comites));
-    draw(page, font, 'consolato', up(v.consolato));
+    draw(page, font, 'comites', consulado.comites);
+    draw(page, font, 'consolato', consulado.circunscricao);
     draw(page, font, 'via', rua);
     draw(page, font, 'numero', up(v.numero));
     draw(page, font, 'cidade', up(v.cidade));
@@ -335,11 +347,9 @@
   }
 
   function defaults() {
-    if (!$('data').value) $('data').value = new Date().toISOString().slice(0, 10);
+    // A data da assinatura é sempre a de hoje, mesmo para quem volta dias depois.
+    $('data').value = new Date().toISOString().slice(0, 10);
     if (!$('telefone').value) $('telefone').value = '+55 ';
-    if (!$('consolatoTop').value) $('consolatoTop').value = 'RIO DE JANEIRO';
-    if (!$('comites').value) $('comites').value = 'RJ/ES';
-    if (!$('consolato').value) $('consolato').value = 'RIO DE JANEIRO';
     if (!$('paisNasc').value) $('paisNasc').value = 'BRASILE';
     if (!$('pais').value) $('pais').value = 'BRASILE';
   }
@@ -356,13 +366,18 @@
 
   /* ---------- escolha do consulado ---------- */
 
-  // 'gate' = escolha, 'rj' = formulário do Rio, 'outros' = aviso de indisponibilidade.
+  // 'gate' = escolha, uma chave de CONSULADOS = formulário, 'outros' = aviso.
   function screen(name, scroll) {
+    var perfil = CONSULADOS[name];
+    if (perfil) {
+      consulado = perfil;
+      $('chosenName').textContent = perfil.rotulo;
+    }
     $('gate').hidden = name !== 'gate';
     $('unsupported').hidden = name !== 'outros';
-    $('rjflow').hidden = name !== 'rj';
+    $('rjflow').hidden = !perfil;
     // O canvas só tem largura depois de aparecer na tela.
-    if (name === 'rj') sizeCanvas();
+    if (perfil) sizeCanvas();
     if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

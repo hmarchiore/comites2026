@@ -6,9 +6,17 @@ A pessoa preenche um formulário em português, no celular ou no computador, e b
 
 ## Escolha do consulado
 
-A primeira tela pergunta qual é o consulado. Quem escolhe **Rio de Janeiro** segue para o formulário completo. Quem escolhe **outro consulado italiano** recebe o aviso de que o sistema ainda não foi configurado para as demais circunscrições do Brasil, com o contato **27 99714-1599** para quem tiver interesse no desenvolvimento.
+A primeira tela pergunta qual é o consulado. Quem escolhe **Rio de Janeiro** segue para o formulário. Quem escolhe **outro consulado italiano** recebe o aviso de que o sistema ainda não foi configurado para as demais circunscrições do Brasil, com o contato **27 99714-1599** para quem tiver interesse no desenvolvimento.
 
-Para atender um novo consulado, basta trocar os valores padrão dos três campos consulares e liberar a opção na tela de escolha. As coordenadas do PDF são as mesmas, porque o modelo oficial é único.
+Como a escolha já define a circunscrição, o formulário não pergunta nada sobre o consulado. Os três campos consulares do PDF saem do perfil escolhido, definido em `CONSULADOS` no `assets/app.js`:
+
+| Campo do PDF | Valor para o Rio |
+| --- | --- |
+| All'Ambasciata/Consolato d'Italia in | RIO DE JANEIRO |
+| COMITES di | RJ/ES |
+| dell'Ambasciata/Consolato in | RIO DE JANEIRO |
+
+Para atender um novo consulado, acrescente um perfil em `CONSULADOS` e um cartão na tela de escolha, com o mesmo valor de `data-go`. As coordenadas do PDF não mudam, porque o modelo oficial é único.
 
 ## Como funciona
 
@@ -33,16 +41,6 @@ Tudo acontece no navegador. Não há servidor, banco de dados nem envio de dados
 ## Rodando localmente
 
 Basta abrir `index.html` no navegador. Não há build nem dependências para instalar.
-
-## Preenchimento padrão
-
-Os campos do consulado já vêm preenchidos para a jurisdição do Rio de Janeiro, conforme orientação do consulado:
-
-- **All'Ambasciata/Consolato d'Italia in:** RIO DE JANEIRO
-- **COMITES di:** RJ/ES
-- **dell'Ambasciata/Consolato in:** RIO DE JANEIRO
-
-Todos continuam editáveis, para quem pertence a outra circunscrição.
 
 ## Envio
 

@@ -52,33 +52,18 @@
 
   <div id="rjflow" hidden>
 
-  <p class="switch"><button type="button" class="linkbtn" data-go="gate">&larr; Trocar consulado</button></p>
+  <div class="chosen">
+    <div>
+      <span class="chosen-label">Consulado escolhido</span>
+      <strong id="chosenName">Rio de Janeiro &middot; COMITES RJ/ES</strong>
+    </div>
+    <button type="button" class="linkbtn" data-go="gate">Trocar</button>
+  </div>
 
   <form id="form" novalidate>
 
     <section class="card">
-      <h2><span class="n">1</span> Consulado</h2>
-      <p class="hint">Já vem preenchido para a jurisdição do Rio de Janeiro (RJ e ES). Só altere se o seu consulado for outro.</p>
-
-      <label class="field">
-        <span>Consulado destinatário <em>(All'Ambasciata/Consolato d'Italia in)</em></span>
-        <input id="consolatoTop" name="consolatoTop" value="RIO DE JANEIRO" autocomplete="off">
-      </label>
-
-      <div class="row">
-        <label class="field">
-          <span>COMITES de <em>(COMITES di)</em></span>
-          <input id="comites" name="comites" value="RJ/ES" autocomplete="off">
-        </label>
-        <label class="field">
-          <span>Circunscrição consular <em>(Consolato in)</em></span>
-          <input id="consolato" name="consolato" value="RIO DE JANEIRO" autocomplete="off">
-        </label>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2><span class="n">2</span> Seus dados</h2>
+      <h2><span class="n">1</span> Seus dados</h2>
 
       <div class="row">
         <label class="field">
@@ -126,7 +111,7 @@
     </section>
 
     <section class="card">
-      <h2><span class="n">3</span> Endereço de residência</h2>
+      <h2><span class="n">2</span> Endereço de residência</h2>
       <p class="hint">É para este endereço que o envelope de votação será enviado. Ele deve ser o mesmo registrado no consulado ou no AIRE. Se for diferente, atualize seu cadastro pelo portal Fast&#8209;It.</p>
 
       <div class="row row-8-2">
@@ -162,7 +147,7 @@
     </section>
 
     <section class="card">
-      <h2><span class="n">4</span> Local, data e assinatura</h2>
+      <h2><span class="n">3</span> Local, data e assinatura</h2>
 
       <div class="row">
         <label class="field">

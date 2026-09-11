@@ -45,6 +45,9 @@
   var consulado = CONSULADOS.rj;
   var BASE_SIZE = 11, MIN_SIZE = 6, LIFT = 1.8;
 
+  // Versões anteriores guardavam o formulário no aparelho. Limpa o que tiver sobrado.
+  try { localStorage.removeItem('comites2026'); } catch (e) {}
+
   var $ = function (id) { return document.getElementById(id); };
   var form = $('form');
   var lastBlob = null, lastName = '';

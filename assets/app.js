@@ -32,7 +32,6 @@
     pais:          { x: 415,   y: 208.6, w: 116, align: 'left'   },
     luogoData:     { x: 106,   y: 164.7, w: 127, align: 'left'   }
   };
-  var SIGN = { cx: 400, base: 166.5, w: 250, h: 34 };
 
   /* Valores presos ao consulado escolhido na primeira tela. Para atender uma
      nova circunscrição, basta acrescentar um perfil aqui e liberar a opção. */
@@ -83,82 +82,6 @@
     var width = font.widthOfTextAtSize(text, size);
     var x = f.align === 'center' ? f.x - width / 2 : f.x;
     page.drawText(text, { x: x, y: f.y + LIFT, size: size, font: font, color: PDFLib.rgb(0.07, 0.09, 0.35) });
-  }
-
-  /* ---------- assinatura ---------- */
-
-  var canvas = $('sig'), ctx = canvas.getContext('2d'), hasInk = false, drawing = false, last = null;
-
-  function sizeCanvas() {
-    var r = canvas.getBoundingClientRect();
-    // Enquanto o formulário está escondido o canvas não tem medida: mantém o que já existe.
-    if (!r.width || !r.height) return;
-    var dpr = Math.min(window.devicePixelRatio || 1, 3);
-    var w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
-    if (w === canvas.width && h === canvas.height) return;
-    var data = hasInk ? canvas.toDataURL() : null;
-    canvas.width = w;
-    canvas.height = h;
-    ctx = canvas.getContext('2d');
-    ctx.lineWidth = 2.4 * dpr;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#12206b';
-    if (data) { var img = new Image(); img.onload = function () { ctx.drawImage(img, 0, 0, canvas.width, canvas.height); }; img.src = data; }
-  }
-
-  function pos(e) {
-    var r = canvas.getBoundingClientRect();
-    return { x: (e.clientX - r.left) * (canvas.width / r.width), y: (e.clientY - r.top) * (canvas.height / r.height) };
-  }
-
-  canvas.addEventListener('pointerdown', function (e) {
-    e.preventDefault();
-    if (!canvas.width) sizeCanvas();
-    canvas.setPointerCapture(e.pointerId);
-    drawing = true; last = pos(e);
-    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(last.x + 0.1, last.y); ctx.stroke();
-    hasInk = true; canvas.parentNode.classList.add('has-ink');
-  });
-  canvas.addEventListener('pointermove', function (e) {
-    if (!drawing) return;
-    e.preventDefault();
-    var p = pos(e);
-    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
-    last = p;
-  });
-  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
-    canvas.addEventListener(ev, function () { drawing = false; });
-  });
-  $('clearSig').addEventListener('click', function () {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    hasInk = false; canvas.parentNode.classList.remove('has-ink');
-  });
-  window.addEventListener('resize', sizeCanvas);
-  if (window.ResizeObserver) new ResizeObserver(sizeCanvas).observe(canvas);
-
-  // Recorta o traço e devolve PNG com fundo transparente.
-  function signaturePng() {
-    if (!hasInk) return null;
-    var img = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    var minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0, found = false;
-    for (var y = 0; y < canvas.height; y++) {
-      for (var x = 0; x < canvas.width; x++) {
-        if (img[(y * canvas.width + x) * 4 + 3] > 12) {
-          found = true;
-          if (x < minX) minX = x; if (x > maxX) maxX = x;
-          if (y < minY) minY = y; if (y > maxY) maxY = y;
-        }
-      }
-    }
-    if (!found) return null;
-    var pad = 6;
-    minX = Math.max(0, minX - pad); minY = Math.max(0, minY - pad);
-    maxX = Math.min(canvas.width - 1, maxX + pad); maxY = Math.min(canvas.height - 1, maxY + pad);
-    var out = document.createElement('canvas');
-    out.width = maxX - minX + 1; out.height = maxY - minY + 1;
-    out.getContext('2d').drawImage(canvas, minX, minY, out.width, out.height, 0, 0, out.width, out.height);
-    return out.toDataURL('image/png');
   }
 
   /* ---------- formulário ---------- */
@@ -239,13 +162,7 @@
     draw(page, font, 'pais', up(v.pais));
     draw(page, font, 'luogoData', up(v.luogo) + ', ' + assin.full);
 
-    var sig = signaturePng();
-    if (sig) {
-      var png = await pdf.embedPng(sig);
-      var scale = Math.min(SIGN.w / png.width, SIGN.h / png.height);
-      var w = png.width * scale, h = png.height * scale;
-      page.drawImage(png, { x: SIGN.cx - w / 2, y: SIGN.base, width: w, height: h });
-    }
+    // A linha da Firma fica em branco: a assinatura é feita à caneta, no papel.
 
     pdf.setTitle('Domanda di iscrizione elenco elettorale COMITES 2026');
     pdf.setSubject('COMITES 2026 - ' + up(v.nome) + ' ' + up(v.cognome));
@@ -261,7 +178,8 @@
       'Nome: ' + nome + '\n' +
       'Data di nascita: ' + brDate(v.nascimento).full + '\n' +
       'Telefono: ' + v.telefone + '\n\n' +
-      'ANEXE O PDF GERADO E A COPIA DO DOCUMENTO DE IDENTIDADE ANTES DE ENVIAR.\n\n' +
+      'ANEXE O FORMULARIO IMPRESSO, ASSINADO A CANETA E DIGITALIZADO, ' +
+      'MAIS A COPIA DO DOCUMENTO DE IDENTIDADE, ANTES DE ENVIAR.\n\n' +
       'Cordiali saluti,\n' + nome;
     return 'mailto:' + EMAIL_CONSULADO +
       '?subject=' + encodeURIComponent('Iscrizione elenco elettorale COMITES 2026 - ' + nome) +
@@ -323,8 +241,6 @@
     if (!confirm('Apagar todos os dados preenchidos?')) return;
     form.reset();
     try { localStorage.removeItem(STORE); } catch (e) {}
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    hasInk = false; canvas.parentNode.classList.remove('has-ink');
     $('result').hidden = true;
     say('');
     defaults();
@@ -376,8 +292,6 @@
     $('gate').hidden = name !== 'gate';
     $('unsupported').hidden = name !== 'outros';
     $('rjflow').hidden = !perfil;
-    // O canvas só tem largura depois de aparecer na tela.
-    if (perfil) sizeCanvas();
     if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

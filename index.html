@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b6b3a">
+<title>COMITES 2026 &mdash; Pedido de inscrição eleitoral</title>
+<meta name="description" content="Preencha o formulário e gere o PDF pronto para imprimir, assinar e enviar ao Consulado da Itália no Rio de Janeiro.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="flag" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero-in">
+    <p class="kicker">Eleições COM.IT.ES. 2026</p>
+    <h1>Pedido de inscrição na lista eleitoral</h1>
+    <p class="sub">Preencha os campos abaixo e baixe o PDF já preenchido. Depois é só imprimir, assinar à caneta, digitalizar e enviar por e-mail ao consulado.</p>
+    <p class="deadline"><strong>Prazo final: 04/11/2026</strong></p>
+  </div>
+</header>
+
+<main>
+
+  <section class="card gate" id="gate">
+    <h2>Qual é o seu consulado?</h2>
+    <p class="hint">O pedido vai para o consulado da sua circunscrição. Escolha para continuar.</p>
+    <div class="choices">
+      <button type="button" class="choice" data-go="rj">
+        <span class="ch-title">Consulado do Rio de Janeiro</span>
+        <span class="ch-sub">Para quem mora no Rio de Janeiro ou no Espírito Santo. COMITES RJ/ES.</span>
+        <span class="ch-cta">Preencher o formulário</span>
+      </button>
+      <button type="button" class="choice" data-go="outros">
+        <span class="ch-title">Outro consulado italiano</span>
+        <span class="ch-sub">São Paulo, Belo Horizonte, Curitiba, Porto Alegre, Recife, Salvador ou Brasília.</span>
+        <span class="ch-cta">Ver situação</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="card notice" id="unsupported" hidden>
+    <h2>Não disponível neste momento</h2>
+    <p>O sistema ainda não está disponível para os outros consulados italianos no Brasil. Ele gera o formulário apenas para a circunscrição do Rio de Janeiro, que atende o Rio de Janeiro e o Espírito Santo.</p>
+    <p>Se você tiver interesse na mesma solução para o seu consulado, entre em contato com <strong>Helder J Marchiori</strong> pelo telefone <strong>27&nbsp;99714&#8209;1599</strong> para o desenvolvimento.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://wa.me/5527997141599?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20formul%C3%A1rio%20do%20COMITES%202026%20para%20outro%20consulado." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="btn" href="tel:+5527997141599">Ligar para 27 99714-1599</a>
+      <button type="button" class="btn ghost" data-go="gate">Voltar</button>
+    </div>
+  </section>
+
+  <div id="rjflow" hidden>
+
+  <div class="chosen">
+    <div>
+      <span class="chosen-label">Consulado escolhido</span>
+      <strong id="chosenName">Rio de Janeiro &middot; COMITES RJ/ES</strong>
+    </div>
+    <button type="button" class="linkbtn" data-go="gate">Trocar</button>
+  </div>
+
+  <form id="form" novalidate>
+
+    <section class="card">
+      <h2><span class="n">1</span> Seus dados</h2>
+
+      <div class="row">
+        <label class="field">
+          <span>Nome <em>(Nome)</em> <b class="req">*</b></span>
+          <input id="nome" name="nome" required autocomplete="given-name" placeholder="GIULIA">
+        </label>
+        <label class="field">
+          <span>Sobrenome <em>(Cognome)</em> <b class="req">*</b></span>
+          <input id="cognome" name="cognome" required autocomplete="family-name" placeholder="GREGORIO CÓ">
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="field">
+          <span>Data de nascimento <b class="req">*</b></span>
+          <input id="nascimento" name="nascimento" type="date" required>
+        </label>
+        <label class="field">
+          <span>Cidade de nascimento <b class="req">*</b></span>
+          <input id="cidadeNasc" name="cidadeNasc" required autocomplete="off" placeholder="VITÓRIA">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>País de nascimento <em>(Stato di nascita)</em> <b class="req">*</b></span>
+        <input id="paisNasc" name="paisNasc" value="BRASILE" required autocomplete="off">
+        <small>Em italiano, <em>Stato</em> quer dizer país. Quem nasceu no Brasil escreve BRASILE.</small>
+      </label>
+
+      <label class="field">
+        <span>Codice Fiscale <em>(não obrigatório)</em></span>
+        <input id="codiceFiscale" name="codiceFiscale" autocomplete="off" spellcheck="false">
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span>Telefone <b class="req">*</b></span>
+          <input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="+55 21 99999-9999">
+        </label>
+        <label class="field">
+          <span>E-mail <em>(não obrigatório)</em></span>
+          <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" placeholder="voce@email.com">
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">2</span> Endereço de residência</h2>
+      <p class="hint">É para este endereço que o envelope de votação será enviado. Ele deve ser o mesmo registrado no consulado ou no AIRE. Se for diferente, atualize seu cadastro pelo portal Fast&#8209;It.</p>
+
+      <div class="row row-8-2">
+        <label class="field">
+          <span>Rua / Avenida <em>(Via/Piazza)</em> <b class="req">*</b></span>
+          <input id="via" name="via" required autocomplete="address-line1" placeholder="RUA ALICE BUMACHAR NEFFA">
+        </label>
+        <label class="field">
+          <span>Número <b class="req">*</b></span>
+          <input id="numero" name="numero" required autocomplete="off" placeholder="153">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Complemento / Bairro <em>(opcional, entra junto da rua)</em></span>
+        <input id="complemento" name="complemento" autocomplete="address-line2" placeholder="APTO 302 - CENTRO">
+      </label>
+
+      <div class="row row-3">
+        <label class="field">
+          <span>Cidade <em>(Città)</em> <b class="req">*</b></span>
+          <input id="cidade" name="cidade" required autocomplete="address-level2" placeholder="VITÓRIA">
+        </label>
+        <label class="field">
+          <span>CEP <em>(CAP)</em> <b class="req">*</b></span>
+          <input id="cap" name="cap" required inputmode="numeric" autocomplete="postal-code" placeholder="29090-290">
+        </label>
+        <label class="field">
+          <span>País <em>(Stato)</em> <b class="req">*</b></span>
+          <input id="pais" name="pais" value="BRASILE" required autocomplete="country-name">
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="n">3</span> Local e data</h2>
+      <p class="hint">Entram na linha <em>Luogo e data</em>, logo antes da assinatura.</p>
+
+      <div class="row">
+        <label class="field">
+          <span>Local <em>(Luogo)</em> <b class="req">*</b></span>
+          <input id="luogo" name="luogo" required autocomplete="off" placeholder="VITÓRIA">
+        </label>
+        <label class="field">
+          <span>Data <b class="req">*</b></span>
+          <input id="data" name="data" type="date" required>
+        </label>
+      </div>
+
+      <p class="callout"><strong>A assinatura é feita à mão.</strong> O PDF sai com a linha <em>Firma</em> em branco de propósito. Você imprime, assina à caneta, digitaliza e envia. A assinatura precisa ser igual à do documento de identidade que vai junto.</p>
+    </section>
+
+    <div id="alert" class="alert" hidden></div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary" id="gen">Gerar PDF preenchido</button>
+      <button type="button" class="btn ghost" id="reset">Limpar formulário</button>
+    </div>
+
+  </form>
+
+  <section class="card result" id="result" hidden>
+    <h2>PDF pronto</h2>
+    <p class="hint" id="resultName"></p>
+    <div class="actions">
+      <a class="btn primary" id="download" download>Baixar PDF</a>
+      <button type="button" class="btn" id="share" hidden>Compartilhar</button>
+      <a class="btn" id="mail" href="#">Abrir e-mail para o consulado</a>
+    </div>
+    <p class="callout">Agora imprima a folha, assine à caneta na linha <em>Firma</em>, digitalize ou fotografe, e envie por e-mail junto com a cópia do seu documento de identidade.</p>
+    <div class="preview" id="preview"></div>
+  </section>
+
+  <section class="card steps">
+    <h2>Como enviar, passo a passo</h2>
+    <ol>
+      <li><strong>Baixe</strong> o PDF gerado e confira todos os dados.</li>
+      <li><strong>Imprima</strong> a folha.</li>
+      <li><strong>Assine à caneta</strong> na linha <em>Firma</em>, com a mesma assinatura do seu documento de identidade.</li>
+      <li><strong>Digitalize</strong> a folha assinada, no scanner ou com a câmera do celular. A foto precisa estar legível e mostrar a página inteira.</li>
+      <li><strong>Envie por e-mail</strong> para <a href="mailto:riodejaneiro.elettorale@esteri.it">riodejaneiro.elettorale@esteri.it</a>, anexando também a cópia de um documento de identidade válido, brasileiro ou italiano, que contenha a sua assinatura.</li>
+      <li>Faça isso até o <strong>prazo final de 04/11/2026</strong>.</li>
+    </ol>
+    <p class="hint">Só quem pedir a inscrição por este formulário recebe as cédulas de votação em casa.</p>
+    <p class="hint">Informações oficiais no <a href="https://consriodejaneiro.esteri.it/br/news/dal_consolato/2026/08/elezione-dei-comitati-degli-italiani-allestero-comites-2026-modalita-per-la-richiesta-di-iscrizione-nellelenco-elettorale/" target="_blank" rel="noopener">site do Consulado Geral da Itália no Rio de Janeiro</a>. Modelo original em branco: <a href="assets/modelo-original.pdf" download>baixar aqui</a>.</p>
+  </section>
+
+  </div><!-- /rjflow -->
+
+  <footer>
+    <p>Seus dados não saem do seu aparelho. O PDF é montado no próprio navegador, sem servidor e sem envio para terceiros.</p>
+    <p class="credit">Feito por <strong>Helder J Marchiori</strong><br>Contato: <a href="tel:+5527997141599">27 99714-1599</a></p>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="assets/template.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

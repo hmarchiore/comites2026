@@ -20,13 +20,13 @@ Para atender um novo consulado, acrescente um perfil em `CONSULADOS` e um cartã
 
 ## Como funciona
 
-Tudo acontece no navegador. Não há servidor, banco de dados nem envio de dados para terceiros.
+Tudo acontece no navegador. Não há servidor, banco de dados, nem envio de dados para terceiros, e nada é gravado no aparelho de quem preenche.
 
 - O PDF oficial em branco fica embutido em base64 em `assets/template.js`.
 - O [pdf-lib](https://pdf-lib.js.org/) abre esse modelo e desenha o texto nas coordenadas de cada linha do formulário.
 - O tamanho da fonte encolhe sozinho quando o texto é maior que o espaço da linha.
 - A linha *Firma* sai em branco de propósito: a assinatura é feita à caneta, depois de imprimir.
-- Os dados digitados ficam apenas no `localStorage` do próprio aparelho, para não se perderem se a página for recarregada.
+- Nada do que é digitado é guardado. Não há `localStorage`, `sessionStorage`, cookie nem IndexedDB: os valores existem só na memória da página e somem ao fechar ou recarregar.
 
 ## Arquivos
 

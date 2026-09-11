@@ -92,6 +92,15 @@ input::placeholder{color:#a9b5ae}
 .steps li{margin-bottom:8px;font-size:15px}
 .steps a{color:var(--green-d)}
 
+/* aviso de privacidade */
+.privacy{
+  display:flex;align-items:flex-start;gap:10px;margin:16px 0 0;padding:12px 14px;
+  border-radius:12px;font-size:14px;line-height:1.5;color:var(--ink);
+  background:rgba(11,107,58,.08);border:1px solid rgba(11,107,58,.2)
+}
+.privacy span[aria-hidden]{font-size:17px;line-height:1.35}
+.fineprint{font-size:12px;opacity:.85;max-width:52ch;margin-left:auto;margin-right:auto}
+
 /* destaque de instrução */
 .callout{
   margin:14px 0 0;padding:12px 14px;border-radius:11px;font-size:14.5px;

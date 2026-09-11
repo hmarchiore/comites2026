@@ -7,7 +7,6 @@
 
   var PDFLib = window.PDFLib;
   var EMAIL_CONSULADO = 'riodejaneiro.elettorale@esteri.it';
-  var STORE = 'comites2026';
 
   /* Coordenadas em pontos do PDF (origem no canto inferior esquerdo, página 612x792).
      align: 'left' usa x como início; 'center' usa x como centro do campo. */
@@ -217,7 +216,6 @@
       $('result').hidden = false;
       say('PDF gerado. Confira os dados antes de enviar.', true);
       $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      save(v);
     } catch (err) {
       console.error(err);
       say('Não foi possível gerar o PDF: ' + (err && err.message ? err.message : err));
@@ -240,27 +238,16 @@
   $('reset').addEventListener('click', function () {
     if (!confirm('Apagar todos os dados preenchidos?')) return;
     form.reset();
-    try { localStorage.removeItem(STORE); } catch (e) {}
     $('result').hidden = true;
     say('');
     defaults();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* ---------- persistência local ---------- */
+  /* ---------- valores iniciais ---------- */
 
-  function save(v) {
-    try { localStorage.setItem(STORE, JSON.stringify(v || values())); } catch (e) {}
-  }
-
-  function load() {
-    try {
-      var raw = localStorage.getItem(STORE);
-      if (!raw) return;
-      var v = JSON.parse(raw);
-      Object.keys(v).forEach(function (k) { var el = $(k); if (el && v[k]) el.value = v[k]; });
-    } catch (e) {}
-  }
+  // Nada do que é digitado sai da memória da página: não há localStorage,
+  // sessionStorage, cookie nem qualquer envio para servidor.
 
   function defaults() {
     // A data da assinatura é sempre a de hoje, mesmo para quem volta dias depois.
@@ -277,7 +264,6 @@
 
   form.addEventListener('input', function (e) {
     if (e.target.classList) e.target.classList.remove('err');
-    save();
   });
 
   /* ---------- escolha do consulado ---------- */
@@ -299,7 +285,6 @@
     el.addEventListener('click', function () { screen(el.getAttribute('data-go'), true); });
   });
 
-  load();
   defaults();
   screen('gate', false);
 })();

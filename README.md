@@ -66,3 +66,7 @@ Projeto independente, sem vínculo oficial com o Consulado ou com o COMITES. O m
 ## FAQ da eleição
 
 `faq/index.html` é uma página separada, publicada em `/faq/`, com as dúvidas do grupo sobre a votação: como marcar a cédula sem anular, prazos do envelope, AIRE, Fast It e a sugestão de preferências da Lista 1. Tem busca, filtro por assunto e um botão que copia o resumo para o WhatsApp. A página inicial mostra um aviso com link para ela.
+
+## Propostas da Lista 1
+
+`propostas/index.html` resume o Plano de Gestão da Lista 1 – MAIB em cinco temas que abrem ao toque, com o PDF original em `propostas/plano-de-gestao-lista1-maib.pdf`. A FAQ e a página inicial têm link para ela.

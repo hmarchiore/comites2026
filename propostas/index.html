@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Propostas da Lista 1 – MAIB</title>
+<meta name="description" content="Plano de Gestão da Lista 1 (MAIB) para o Com.It.Es. RJ/ES 2026: atendimento, cultura, jovens, interior e parcerias.">
+<meta property="og:title" content="Propostas da Lista 1 – MAIB">
+<meta property="og:description" content="O que a chapa propõe para o Com.It.Es. do Rio de Janeiro e Espírito Santo.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: mesma identidade da FAQ; cinco frentes como cartões que abrem ao toque */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --ink:#1d2420; --muted:#5b665f; --line:#dde2dc;
+  --verde:#1f6b4a; --verde-soft:#e3f0e8; --rosso:#b8322b; --rosso-soft:#f8e6e4; --ouro:#a37a1c;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --surface:#1a201d; --ink:#e8ece9; --muted:#9aa69f; --line:#2c3530;
+  --verde:#5bbf8e; --verde-soft:#1d3329; --rosso:#ef7a71; --rosso-soft:#3a2220; --ouro:#d8b25a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a201d; --ink:#e8ece9; --muted:#9aa69f; --line:#2c3530;
+  --verde:#5bbf8e; --verde-soft:#1d3329; --rosso:#ef7a71; --rosso-soft:#3a2220; --ouro:#d8b25a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+a{color:var(--verde)}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+.flag{height:6px;background:linear-gradient(90deg,var(--verde) 0 33.3%,var(--surface) 33.3% 66.6%,var(--rosso) 66.6%)}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px}
+header{padding:20px 0 4px;display:grid;gap:12px}
+.eyebrow{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--verde)}
+header h1{font-size:clamp(28px,7vw,42px);font-weight:800}
+header p{margin:0;color:var(--muted);max-width:60ch}
+.badge{display:inline-flex;align-items:center;gap:10px;align-self:start;border:2px solid var(--verde);border-radius:10px;padding:8px 14px;background:var(--verde-soft);font:700 15px/1.2 var(--display)}
+.badge b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--verde);color:var(--surface)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;font:700 15px var(--display);padding:12px 18px;border-radius:10px;border:0;background:var(--verde);color:var(--surface);text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--verde);border:2px solid var(--verde)}
+
+.glance{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.glance a{display:grid;gap:4px;padding:14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.glance a span{font:700 12px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+.glance a b{font:700 16px/1.25 var(--display)}
+
+.note{margin-top:24px;padding:14px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--muted);font-size:16px}
+.note strong{color:var(--ink)}
+
+section.pilar{margin-top:30px;scroll-margin-top:16px}
+.pilar>h2{font-size:24px;display:flex;align-items:baseline;gap:10px}
+.pilar>h2 small{font:700 13px var(--display);color:var(--verde);letter-spacing:.06em}
+.pilar>p{margin:6px 0 12px;color:var(--muted)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+details[open]{border-color:var(--verde)}
+summary{list-style:none;cursor:pointer;padding:14px 44px 14px 16px;position:relative;font-weight:700;line-height:1.35}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);font:700 22px var(--display);color:var(--verde)}
+details[open] summary::after{content:"–"}
+ul.it{margin:0;padding:0 16px 16px 36px}
+ul.it li{margin-bottom:6px}
+ul.it li::marker{color:var(--verde)}
+.honest{margin-top:34px;padding:18px;border-radius:14px;border:2px dashed var(--rosso);background:var(--rosso-soft)}
+.honest h2{font-size:20px;margin-bottom:8px;color:var(--rosso)}
+.honest p{margin:0 0 8px}.honest p:last-child{margin:0}
+footer{margin-top:36px;font-size:14px;color:var(--muted)}
+#copied{margin-left:6px;color:var(--verde);font-weight:700}
+</style>
+</head>
+<body>
+<div class="flag" aria-hidden="true"></div>
+<div class="wrap">
+
+<nav class="top" aria-label="Navegação">
+  <a href="../faq/">&larr; Dúvidas sobre a votação (FAQ)</a>
+  <span id="updated"></span>
+</nav>
+
+<header>
+  <span class="eyebrow">Com.It.Es. RJ/ES 2026 · Plano de Gestão</span>
+  <h1>O que a Lista 1 propõe para a nossa comunidade</h1>
+  <p>Resumo do Plano de Gestão e Articulação Institucional da chapa Movimento Associativo Italiani in Brasile (MAIB). Toque em cada tema para ver as ações.</p>
+  <span class="badge"><b>1</b>Lista 1 · MAIB</span>
+  <div class="actions">
+    <a class="btn" href="plano-de-gestao-lista1-maib.pdf" target="_blank" rel="noopener">Abrir o plano completo (PDF)</a>
+    <button class="btn ghost" type="button" id="share">Copiar link desta página</button><span id="copied" role="status"></span>
+  </div>
+</header>
+
+<nav class="glance" aria-label="Temas do plano">
+  <a href="#atendimento"><span>Tema 1</span><b>Atendimento e participação</b></a>
+  <a href="#cultura"><span>Tema 2</span><b>Cultura e língua italiana</b></a>
+  <a href="#jovens"><span>Tema 3</span><b>Jovens e oportunidades</b></a>
+  <a href="#interior"><span>Tema 4</span><b>Associações, interior e turismo de raízes</b></a>
+  <a href="#governanca"><span>Tema 5</span><b>Parcerias e revisão do plano</b></a>
+</nav>
+
+<div class="note">
+  <strong>Como o plano funciona:</strong> as metas e ações são revistas uma vez por ano, para acompanhar mudanças do Governo Italiano, do Ministério das Relações Exteriores (MAECI), das autoridades brasileiras e das necessidades da comunidade. O plano fica aberto a novas propostas.
+</div>
+
+<section class="pilar" id="atendimento">
+  <h2><small>1</small>Atendimento e participação</h2>
+  <p>Um ponto de apoio para quem precisa lidar com o Consulado e os portais italianos.</p>
+  <details open><summary>Atendimento e inclusão digital</summary><ul class="it">
+    <li>Usar a Sala do Com.It.Es. como espaço de atendimento, orientação e apoio.</li>
+    <li>Ajudar no acesso a portais e sistemas digitais.</li>
+    <li>Apoiar agendamentos e o uso dos serviços consulares.</li>
+    <li>Atenção prioritária a idosos e a quem tem dificuldade com tecnologia.</li>
+    <li>Encaminhar dúvidas e orientar sobre os procedimentos.</li></ul></details>
+  <details><summary>Informação e comunicação</summary><ul class="it">
+    <li>Divulgar informações claras sobre os serviços consulares.</li>
+    <li>Orientar sobre o reconhecimento da cidadania italiana.</li>
+    <li>Reduzir a falta de informação e os atrasos no atendimento.</li>
+    <li>Usar canais presenciais e digitais.</li></ul></details>
+  <details><summary>Escuta e participação</summary><ul class="it">
+    <li>Fazer reuniões e atendimentos abertos.</li>
+    <li>Receber sugestões, dúvidas e demandas locais.</li>
+    <li>Manter contato com associações, lideranças e comunidades.</li>
+    <li>Usar o que for ouvido para orientar as ações do Com.It.Es.</li></ul></details>
+</section>
+
+<section class="pilar" id="cultura">
+  <h2><small>2</small>Cultura e língua italiana</h2>
+  <p>Levar a cultura e o idioma para mais cidades, com parceiros que ajudem a pagar a conta.</p>
+  <details><summary>Divulgação da cultura italiana</summary><ul class="it">
+    <li>Levar atividades culturais ao interior e a diferentes regiões.</li>
+    <li>Exposições, apresentações, oficinas e encontros.</li>
+    <li>Atividades de gastronomia, memória e tradições italianas.</li>
+    <li>Apoiar projetos que valorizem a história da comunidade.</li></ul></details>
+  <details><summary>Cursos de língua italiana</summary><ul class="it">
+    <li>Apoiar novos cursos e ampliar os existentes quando houver condições.</li>
+    <li>Divulgar os cursos e buscar espaços para as aulas.</li>
+    <li>Incentivar a formação de professores.</li>
+    <li>Tratar o idioma como cultura, integração e preservação da identidade.</li></ul></details>
+  <details><summary>Parcerias com instituições de ensino</summary><ul class="it">
+    <li>Parcerias com institutos de cultura, escolas, universidades e centros de formação.</li>
+    <li>Envolver associações e casas italianas.</li>
+    <li>Estimular a participação de instituições públicas e privadas.</li></ul></details>
+  <details><summary>Cooperação com prefeituras e governos estaduais</summary><ul class="it">
+    <li>Buscar acordos de cooperação com municípios e estados.</li>
+    <li>Apoiar a cessão de espaços públicos para cursos e cultura, quando possível.</li>
+    <li>Ações conjuntas de divulgação, respeitando as competências de cada órgão.</li></ul></details>
+  <details><summary>Projetos sociais e terceiro setor</summary><ul class="it">
+    <li>Viabilizar iniciativas por meio de projetos sociais e editais.</li>
+    <li>Colaborar com organizações do terceiro setor.</li>
+    <li>Priorizar comunidades com menos acesso a cultura e educação.</li></ul></details>
+  <details><summary>Como manter e financiar as atividades</summary><ul class="it">
+    <li>Buscar recursos para manter parte dos cursos de italiano.</li>
+    <li>Financiamento compartilhado entre instituições parceiras.</li>
+    <li>Termos de cooperação, fundos de cultura e educação e outras fontes legais.</li>
+    <li>Transparência e sustentabilidade financeira.</li></ul></details>
+</section>
+
+<section class="pilar" id="jovens">
+  <h2><small>3</small>Jovens e oportunidades</h2>
+  <p>Trazer as novas gerações de ítalo-descendentes para perto.</p>
+  <details><summary>Participação dos jovens</summary><ul class="it">
+    <li>Fóruns, encontros e grupos de trabalho para as novas gerações.</li>
+    <li>Ouvir as propostas e necessidades dos jovens.</li>
+    <li>Incentivar a participação nas atividades da comunidade.</li></ul></details>
+  <details><summary>Formação e intercâmbio</summary><ul class="it">
+    <li>Divulgar bolsas de estudo e intercâmbios.</li>
+    <li>Informar sobre cursos, capacitação e trabalho na Itália.</li>
+    <li>Estimular intercâmbio acadêmico e profissional.</li>
+    <li>Apoiar empreendedorismo cultural e aproximar jovens de escolas e empresas.</li></ul></details>
+</section>
+
+<section class="pilar" id="interior">
+  <h2><small>4</small>Associações, interior e turismo de raízes</h2>
+  <p>O Com.It.Es. além das capitais, do Rio ao interior do Espírito Santo.</p>
+  <details><summary>Mapeamento das entidades</summary><ul class="it">
+    <li>Atualizar o cadastro de associações, círculos e casas italianas.</li>
+    <li>Identificar projetos sociais e lideranças no RJ e no ES.</li>
+    <li>Orientar a regularização das entidades e fortalecer sua relação com o Consulado.</li></ul></details>
+  <details><summary>Presença no interior</summary><ul class="it">
+    <li>Reuniões itinerantes e atendimentos abertos no interior.</li>
+    <li>Atividades em parceria com entidades locais.</li>
+    <li>Identificar as necessidades de cada região.</li></ul></details>
+  <details><summary>Turismo de raízes</summary><ul class="it">
+    <li>Valorizar as regiões de colonização italiana, roteiros históricos e espaços de memória.</li>
+    <li>Divulgar festas, gastronomia, museus e manifestações culturais.</li>
+    <li>Parcerias com municípios, estados, entidades culturais e operadores turísticos.</li>
+    <li>Criar conexões culturais e turísticas entre Brasil e Itália.</li></ul></details>
+</section>
+
+<section class="pilar" id="governanca">
+  <h2><small>5</small>Parcerias e revisão do plano</h2>
+  <p>Diálogo com quem pode ajudar, e prestação de contas todo ano.</p>
+  <details><summary>Diálogo institucional</summary><ul class="it">
+    <li>Diálogo permanente com a Embaixada e os Consulados-Gerais da Itália.</li>
+    <li>Parcerias com governos municipais e estaduais.</li>
+    <li>Cooperação com institutos de cultura, universidades e escolas.</li>
+    <li>Aproximar o Com.It.Es. de associações, terceiro setor, empresas e lideranças.</li></ul></details>
+  <details><summary>Formas de cooperação</summary><ul class="it">
+    <li>Cooperação institucional e apoio técnico.</li>
+    <li>Cessão de espaços e divulgação conjunta.</li>
+    <li>Financiamento compartilhado.</li>
+    <li>Projetos executados por organizações sociais e participação em editais.</li></ul></details>
+  <details><summary>Avaliação e revisão anual</summary><ul class="it">
+    <li>Avaliar todo ano as ações e os resultados.</li>
+    <li>Buscar novas parcerias e ajustar metas.</li>
+    <li>Incorporar propostas da comunidade.</li>
+    <li>Atuação representativa, transparente e aberta ao diálogo.</li></ul></details>
+</section>
+
+<aside class="honest">
+  <h2>O que a chapa não promete</h2>
+  <p>O Com.It.Es. não muda a lei da cidadania, não emite passaporte e não decide processos. Por isso o plano fala só do que um comitê pode fazer de verdade: orientar, ouvir, cobrar e fazer parcerias.</p>
+  <p>Ficou com dúvida sobre como votar? Veja a <a href="../faq/">FAQ da eleição</a>.</p>
+</aside>
+
+<footer>
+  <p>Conteúdo resumido do <a href="plano-de-gestao-lista1-maib.pdf" target="_blank" rel="noopener">Plano de Gestão e Articulação Institucional</a> da Lista 1 – MAIB. A lista oficial de candidatos das duas chapas está no <a href="https://consriodejaneiro.esteri.it/wp-content/uploads/2026/10/LISTE-COMITES-PER-BACHECA-E-SITO-2026.pdf" target="_blank" rel="noopener">site do Consulado</a>.</p>
+</footer>
+</div>
+<script>
+(function(){
+  var lm=new Date(document.lastModified); if(isNaN(lm)||lm.getFullYear()<2026) lm=new Date();
+  document.getElementById('updated').textContent='Atualizado em '+lm.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+  document.getElementById('share').addEventListener('click',function(){
+    var u=location.href.split('#')[0], s=document.getElementById('copied');
+    var done=function(){s.textContent='Link copiado!';setTimeout(function(){s.textContent=''},2500)};
+    if(navigator.clipboard) navigator.clipboard.writeText(u).then(done,function(){s.textContent=u});
+    else s.textContent=u;
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="FAQ da eleição do Com.It.Es. RJ/ES 2026: como votar, chapas, prazos e AIRE.">
+<meta property="og:title" content="Votar no Com.It.Es. RJ/ES">
+<meta property="og:description" content="Como votar sem anular, prazos do envelope e a sugestão do grupo.">
+<title>Votar no Com.It.Es. RJ/ES</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column; postal-ballot metaphor (envelope, cédula, carimbo) carries the visuals */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --ink:#1d2420; --muted:#5b665f; --line:#dde2dc;
+  --verde:#1f6b4a; --verde-soft:#e3f0e8; --rosso:#b8322b; --rosso-soft:#f8e6e4; --ouro:#a37a1c;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --surface:#1a201d; --ink:#e8ece9; --muted:#9aa69f; --line:#2c3530;
+  --verde:#5bbf8e; --verde-soft:#1d3329; --rosso:#ef7a71; --rosso-soft:#3a2220; --ouro:#d8b25a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --surface:#1a201d; --ink:#e8ece9; --muted:#9aa69f; --line:#2c3530;
+  --verde:#5bbf8e; --verde-soft:#1d3329; --rosso:#ef7a71; --rosso-soft:#3a2220; --ouro:#d8b25a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);margin:0}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+a{color:var(--verde)}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+
+/* faixa tricolor fina */
+.flag{height:6px;background:linear-gradient(90deg,var(--verde) 0 33.3%,var(--surface) 33.3% 66.6%,var(--rosso) 66.6%)}
+
+header.hero{padding:28px 0 8px;display:grid;gap:12px}
+.eyebrow{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--verde)}
+.hero h1{font-size:clamp(28px,7vw,42px);font-weight:800}
+.hero p{margin:0;color:var(--muted);max-width:60ch}
+.stamp{display:inline-flex;align-items:center;gap:10px;align-self:start;border:2px dashed var(--rosso);color:var(--rosso);border-radius:10px;padding:8px 14px;font:700 15px/1.2 var(--display);transform:rotate(-1.5deg);background:var(--rosso-soft)}
+.stamp b{font-size:22px}
+
+/* countdown */
+.count{font-variant-numeric:tabular-nums}
+
+/* passos rápidos */
+.quick{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.quick h2{font-size:20px;margin-bottom:12px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;counter-increment:s}
+.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--verde);color:var(--surface);font:700 16px var(--display)}
+.steps li b{display:block}
+.steps li span{color:var(--muted);font-size:15px}
+.warn{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--rosso-soft);color:var(--ink);font-size:15px}
+.warn strong{color:var(--rosso)}
+
+/* cédula ilustrativa */
+.ballot-sec{margin-top:28px}
+.ballot-sec h2{font-size:22px;margin-bottom:6px}
+.ballot-sec>p{margin:0 0 14px;color:var(--muted)}
+.ballot{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px;box-shadow:0 1px 0 var(--line),0 8px 24px -16px rgba(0,0,0,.35)}
+.list{border:1px solid var(--line);border-radius:6px;padding:10px;min-width:0}
+.list.sel{border-color:var(--verde);background:var(--verde-soft)}
+.lhead{display:flex;align-items:center;gap:8px;margin-bottom:8px;font:700 13px/1.25 var(--display)}
+.sym{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font-size:11px;color:var(--muted);position:relative}
+.x::after{content:"✕";position:absolute;inset:-6px;display:grid;place-items:center;color:var(--rosso);font:800 30px/1 var(--display)}
+.names{list-style:none;margin:0;padding:0;font-size:13px;line-height:1.3;display:grid;gap:3px}
+.names li{display:flex;gap:6px;align-items:center;min-width:0}
+.box{flex:none;width:14px;height:14px;border:1.5px solid var(--muted);border-radius:2px;position:relative}
+.box.x::after{inset:-7px;font-size:17px}
+.names .n{color:var(--muted);font-variant-numeric:tabular-nums;width:18px;text-align:right;flex:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:14px;color:var(--muted)}
+.legend span::before{content:"✕ ";color:var(--rosso);font-weight:800}
+@media (max-width:460px){.ballot{grid-template-columns:1fr}.list.dim{display:none}}
+
+/* busca + faq */
+.faq-head{margin-top:36px;display:grid;gap:12px}
+.faq-head h2{font-size:26px}
+.search{position:relative}
+.search input{width:100%;font:16px var(--body);padding:12px 14px 12px 40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chips button{flex:none;font:600 14px var(--body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--verde);color:var(--surface);border-color:var(--verde)}
+.group{margin-top:22px}
+.group h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+details[open]{border-color:var(--verde)}
+summary{list-style:none;cursor:pointer;padding:14px 44px 14px 16px;position:relative;font-weight:700;line-height:1.35}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);font:700 22px var(--display);color:var(--verde)}
+details[open] summary::after{content:"–"}
+.ans{padding:0 16px 16px;color:var(--ink)}
+.ans p{margin:0 0 10px}.ans p:last-child{margin:0}
+.ans ul,.ans ol{margin:0 0 10px;padding-left:20px}
+.tag{display:inline-block;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:6px;background:var(--verde-soft);color:var(--verde);margin-bottom:8px}
+.tag.sug{background:var(--rosso-soft);color:var(--rosso)}
+.tbl{overflow-x:auto;margin:6px 0 10px}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 13px var(--display);color:var(--muted)}
+td.mark{color:var(--verde);font-weight:700;white-space:nowrap}
+.empty{color:var(--muted);padding:16px 0}
+
+/* timeline */
+.tl{list-style:none;margin:4px 0 10px;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:18px 1fr;gap:12px;position:relative;padding-bottom:14px}
+.tl li::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--verde);margin-top:6px}
+.tl li:not(:last-child)::after{content:"";position:absolute;left:6px;top:20px;bottom:0;width:2px;background:var(--line)}
+.tl li.done::before{background:var(--muted);border-color:var(--muted)}
+.tl li.key::before{background:var(--rosso);border-color:var(--rosso)}
+.tl b{display:block}.tl small{color:var(--muted);font-size:14px}
+
+/* copiar */
+.copybox{margin-top:36px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.copybox h2{font-size:20px;margin-bottom:6px}
+.copybox p{margin:0 0 12px;color:var(--muted)}
+.btn{font:700 15px var(--display);padding:12px 18px;border-radius:10px;border:0;background:var(--verde);color:var(--surface);cursor:pointer}
+.email{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.email code{font-size:15px;background:var(--verde-soft);padding:4px 8px;border-radius:6px;user-select:all;word-break:break-all}
+.small{font-size:13px;padding:6px 10px}
+footer{margin-top:36px;font-size:14px;color:var(--muted)}
+footer ul{padding-left:18px;margin:6px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="flag" aria-hidden="true"></div>
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">Eleição do Com.It.Es. · Rio de Janeiro e Espírito Santo</span>
+  <h1>Seu envelope de votação está a caminho. Vamos votar sem errar?</h1>
+  <p>Tudo o que o grupo perguntou nos últimos dois meses, respondido com as regras oficiais do Consulado. Leva 3 minutos. O voto é seu, livre e secreto.</p>
+  <div class="stamp" role="note"><span>O voto precisa <u>chegar</u> ao Consulado até</span><b>4/12</b></div>
+  <p class="count" id="count"></p>
+</header>
+
+<section class="quick" aria-labelledby="q1">
+  <h2 id="q1">Recebeu o envelope? Faça assim</h2>
+  <ol class="steps">
+    <li><div><b>Marque UMA lista</b><span>Um X sobre o símbolo da chapa escolhida.</span></div></li>
+    <li><div><b>Se quiser, marque até 4 nomes</b><span>Todos da mesma lista que você marcou.</span></div></li>
+    <li><div><b>Cédula no envelope pequeno</b><span>Feche. Não escreva nada nele.</span></div></li>
+    <li><div><b>Envelope pequeno + canhoto no envelope selado</b><span>O canhoto é a parte destacável do certificado eleitoral.</span></div></li>
+    <li><div><b>Poste nos Correios o quanto antes</b><span>O ideal é até 24/11. O que chegar depois de 4/12 não conta.</span></div></li>
+  </ol>
+  <div class="warn"><strong>Anula o voto:</strong> assinar, escrever seu nome ou qualquer recado na cédula, ou marcar duas listas.</div>
+</section>
+
+<section class="ballot-sec" aria-labelledby="b1">
+  <h2 id="b1">Como fica uma cédula bem marcada</h2>
+  <p>Ilustração simplificada. Siga sempre a folha de instruções do seu envelope.</p>
+  <div class="ballot" role="img" aria-label="Exemplo de cédula: X no símbolo da Lista 1 e X ao lado de quatro nomes dessa lista">
+    <div class="list sel">
+      <div class="lhead"><span class="sym x">1</span>Lista 1 · Movimento Associativo Italiani in Brasile</div>
+      <ul class="names">
+        <li><span class="n">1</span><span class="box"></span>Ferrero Raffaela</li>
+        <li><span class="n">2</span><span class="box"></span>Avanza Juliana</li>
+        <li><span class="n">3</span><span class="box x"></span>De Carvalho Pedrazzi Juliana</li>
+        <li><span class="n">4</span><span class="box"></span>Da Silva Araujo Geraldo M.</li>
+        <li><span class="n">5</span><span class="box"></span>Sepulcri José Lino</li>
+        <li><span class="n">6</span><span class="box x"></span>Gomes da Costa Jr. Carlos</li>
+        <li><span class="n">7</span><span class="box x"></span>De Araujo Sbragia Flavia</li>
+        <li><span class="n">8</span><span class="box"></span>De Almeida Stocchero André</li>
+        <li><span class="n">9</span><span class="box x"></span>Barreto da S. Palermo Pedro L.</li>
+        <li><span class="n">…</span><span class="box"></span>mais 7 nomes</li>
+      </ul>
+    </div>
+    <div class="list dim">
+      <div class="lhead"><span class="sym">2</span>Lista 2 · Noi Italiani – Giustizia e Libertà</div>
+      <ul class="names">
+        <li><span class="n">1</span><span class="box"></span>Caruso de Freitas Mylene</li>
+        <li><span class="n">2</span><span class="box"></span>Santos Daniela</li>
+        <li><span class="n">3</span><span class="box"></span>Dalla Bernardina Flavia</li>
+        <li><span class="n">4</span><span class="box"></span>Forattini de Lima Ana C.</li>
+        <li><span class="n">5</span><span class="box"></span>Lanzi Andrea</li>
+        <li><span class="n">…</span><span class="box"></span>mais 11 nomes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="legend"><span>1 lista</span><span>até 4 nomes da mesma lista</span><span>nada de assinatura</span></div>
+</section>
+
+<section aria-labelledby="f1">
+  <div class="faq-head">
+    <h2 id="f1">Perguntas do grupo</h2>
+    <label class="search" for="q"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Procure: envelope, AIRE, 4 nomes, Fast It…" autocomplete="off" aria-label="Procurar nas perguntas"></label>
+    <div class="chips" role="group" aria-label="Filtrar por assunto">
+      <button type="button" data-f="all" aria-pressed="true">Todas</button>
+      <button type="button" data-f="voto" aria-pressed="false">Como votar</button>
+      <button type="button" data-f="chapa" aria-pressed="false">Chapas</button>
+      <button type="button" data-f="prazo" aria-pressed="false">Prazos e envelope</button>
+      <button type="button" data-f="aire" aria-pressed="false">AIRE e Fast It</button>
+      <button type="button" data-f="boato" aria-pressed="false">Boatos</button>
+    </div>
+  </div>
+
+  <div id="faq">
+
+  <div class="group" data-g="voto"><h3>Como o voto funciona</h3>
+    <details><summary>Eu voto na chapa ou na pessoa?</summary><div class="ans">
+      <p>Nas duas coisas, na mesma cédula. Primeiro você escolhe <b>uma</b> lista. Depois, se quiser, marca nomes <b>dessa mesma lista</b>. Esses nomes se chamam preferências.</p></div></details>
+    <details><summary>Quantos nomes posso marcar?</summary><div class="ans">
+      <p><b>Até 4.</b> A lei permite preferências até um terço das cadeiras, e o Comites do Rio tem 12 cadeiras. Pode marcar 1, 2, 3, 4 nomes ou nenhum.</p></div></details>
+    <details><summary>Se eu marcar só a chapa, sem nomes, o voto vale?</summary><div class="ans">
+      <p>Vale. Conta para a lista e ajuda a chapa a ganhar cadeiras. Só não ajuda nenhum candidato em especial.</p></div></details>
+    <details><summary>Se eu marcar só os nomes, sem a chapa, vale?</summary><div class="ans">
+      <p>Vale. Pela lei, marcar preferências de uma lista já conta como voto nessa lista.</p></div></details>
+    <details><summary>Como as 12 cadeiras são divididas?</summary><div class="ans">
+      <ol><li>As cadeiras são repartidas entre as listas, na proporção dos votos de cada uma.</li>
+      <li>Dentro de cada lista, entram os candidatos com mais preferências.</li></ol>
+      <p>Votos na lista decidem <b>quantas</b> cadeiras a chapa leva. As preferências decidem <b>quem</b> senta nelas.</p></div></details>
+    <details><summary>Posso marcar nomes das duas listas?</summary><div class="ans">
+      <p>Não. Preferências para candidatos de outra lista não valem, e marcar duas listas com preferências anula o voto.</p></div></details>
+    <details><summary>Posso tirar foto da cédula para mostrar no grupo?</summary><div class="ans">
+      <p>Melhor não. O voto é secreto e ninguém precisa provar em quem votou. Se quiser avisar, diga só "votei e postei".</p></div></details>
+    <details><summary>Cada pessoa da família vota no próprio envelope?</summary><div class="ans">
+      <p>Sim. Cada eleitor recebe o seu, e um envelope não pode levar o voto de outra pessoa.</p></div></details>
+  </div>
+
+  <div class="group" data-g="chapa"><h3>Chapas e a sugestão do grupo</h3>
+    <details><summary>Quantas chapas concorrem?</summary><div class="ans">
+      <p>Duas, segundo a <a href="https://consriodejaneiro.esteri.it/wp-content/uploads/2026/10/LISTE-COMITES-PER-BACHECA-E-SITO-2026.pdf" target="_blank" rel="noopener">lista oficial do Consulado</a> (19/10/2026):</p>
+      <ul><li><b>Lista 1</b> – Movimento Associativo Italiani in Brasile (MAIB)</li><li><b>Lista 2</b> – Noi Italiani – Giustizia e Libertà</li></ul></div></details>
+    <details><summary>Quem são os candidatos da Lista 1?</summary><div class="ans">
+      <div class="tbl"><table><thead><tr><th>Nº</th><th>Candidato(a)</th><th></th></tr></thead><tbody>
+      <tr><td>1</td><td>Raffaela Ferrero</td><td></td></tr>
+      <tr><td>2</td><td>Juliana Avanza</td><td></td></tr>
+      <tr><td>3</td><td>Juliana de Carvalho Pedrazzi</td><td class="mark">sugerida</td></tr>
+      <tr><td>4</td><td>Geraldo Magela da Silva Araujo</td><td></td></tr>
+      <tr><td>5</td><td>José Lino Sepulcri</td><td></td></tr>
+      <tr><td>6</td><td>Carlos Gomes da Costa Junior</td><td class="mark">do grupo</td></tr>
+      <tr><td>7</td><td>Flavia de Araujo Sbragia</td><td class="mark">do grupo</td></tr>
+      <tr><td>8</td><td>André de Almeida Stocchero</td><td></td></tr>
+      <tr><td>9</td><td>Pedro Lucas Barreto da Silva Palermo</td><td class="mark">do grupo</td></tr>
+      <tr><td>10</td><td>Ferminio Valdinei</td><td></td></tr>
+      <tr><td>11</td><td>Washington Moscon</td><td></td></tr>
+      <tr><td>12</td><td>Bianca Gasperazzo</td><td class="mark">sugerida</td></tr>
+      <tr><td>13</td><td>Monica Pavesi Simão</td><td></td></tr>
+      <tr><td>14</td><td>Felipe Caliari Silva</td><td></td></tr>
+      <tr><td>15</td><td>José Carlos Busatto</td><td></td></tr>
+      <tr><td>16</td><td>Carmela Grimaldi</td><td></td></tr>
+      </tbody></table></div>
+      <p>Os candidatos da Lista 2 estão no mesmo documento oficial do Consulado.</p></div></details>
+    <details><summary>Onde estão as propostas?</summary><div class="ans">
+      <p>O Plano de Gestão da Lista 1 foi compartilhado no grupo (PDF "Plano de Gestão – Síntese Parcerias") e está no Instagram da chapa, @MAIB RJ-ES. Para comparar, procure também as propostas da Lista 2 nos canais dela.</p></div></details>
+    <details><summary>O que é "quem está do 1 ao 150 vota em…"?</summary><div class="ans">
+      <span class="tag sug">Sugestão, não regra</span>
+      <p>É uma proposta da chapa para quem quiser ajudar a eleger o maior número de pessoas que já trabalham pelo grupo. Não é regra do Consulado, ninguém confere e o voto continua secreto.</p>
+      <div class="tbl"><table><thead><tr><th>Seu nº na lista do grupo</th><th>Lista</th><th>Nomes sugeridos</th></tr></thead><tbody>
+        <tr><td>1 a 150</td><td>Lista 1</td><td>3, 6, 7 e <b>9</b> · Juliana Pedrazzi, Carlos Costa, Flavia Sbragia, <b>Pedro Palermo</b></td></tr>
+        <tr><td>151 em diante</td><td>Lista 1</td><td>3, 6, 7 e <b>12</b> · Juliana Pedrazzi, Carlos Costa, Flavia Sbragia, <b>Bianca Gasperazzo</b></td></tr>
+      </tbody></table></div></div></details>
+    <details><summary>Por que dividir em dois grupos em vez de todo mundo votar nos mesmos 4?</summary><div class="ans">
+      <p>Porque as preferências decidem quem entra dentro da chapa. Se todos marcassem os mesmos 4 nomes, o 5º ficaria sem voto. Dividindo só a 4ª preferência, os três primeiros recebem o voto de todos e os outros dois recebem metade cada. É a tentativa de eleger 5 pessoas com os mesmos votos, em vez de 4.</p></div></details>
+    <details><summary>Isso não é "mandar" as pessoas votarem?</summary><div class="ans">
+      <p>A intenção é o contrário: que o voto de quem confia na chapa não se perca espalhado. Quem prefere escolher por conta própria tem caminhos que também ajudam a Lista 1:</p>
+      <ul><li>marcar só a Lista 1, sem nomes;</li><li>marcar a Lista 1 e os nomes que você quiser dela;</li><li>seguir a combinação sugerida.</li></ul>
+      <p>E você pode votar na Lista 2. O voto é seu.</p></div></details>
+    <details><summary>Não sei meu número na lista. E agora?</summary><div class="ans">
+      <p>Procure seu nome na lista que circula no grupo. Se não achar, pergunte a um dos administradores no privado.</p></div></details>
+    <details><summary>Por que pedem para colocar o nome na lista?</summary><div class="ans">
+      <p>Só para a chapa saber quantos votos pode esperar e dividir a sugestão de forma equilibrada. A lista não vai para o Consulado e não tem efeito no seu voto.</p></div></details>
+  </div>
+
+  <div class="group" data-g="prazo"><h3>Prazos e envelope</h3>
+    <details open><summary>Quais são as datas?</summary><div class="ans">
+      <ul class="tl">
+        <li class="done"><div><b>4/11 · Pedir a cédula</b><small>Encerrado. Só recebe quem pediu.</small></div></li>
+        <li><div><b>Até ~14/11 · Consulado envia os envelopes</b><small>Pela lei, até 20 dias antes da eleição.</small></div></li>
+        <li><div><b>A partir de ~21/11 · 2ª via se não chegou</b><small>Confirmar com o Consulado.</small></div></li>
+        <li><div><b>Até 24/11 · Postar o voto</b><small>Pela lei, 10 dias antes. Quanto antes, melhor.</small></div></li>
+        <li class="key"><div><b>4/12 · Voto precisa chegar ao Consulado</b><small>O que chegar depois não conta.</small></div></li>
+      </ul></div></details>
+    <details><summary>O envelope não chegou. O que faço?</summary><div class="ans">
+      <p>Avise no grupo e escreva para o e-mail eleitoral do Consulado pedindo uma segunda via:</p>
+      <div class="email"><code id="em1">riodejaneiro.elettorale@esteri.it</code><button class="btn small" type="button" data-copy="em1">Copiar</button></div></div></details>
+    <details><summary>Chegou faltando cédula ou envelope.</summary><div class="ans">
+      <p>Escreva para o mesmo e-mail eleitoral explicando o que faltou.</p></div></details>
+    <details><summary>Mudei de endereço depois de pedir.</summary><div class="ans">
+      <p>O envelope vai para o endereço que o Consulado tem. Se ainda tem acesso ao endereço antigo, vale buscar lá. Se não, escreva ao Consulado.</p></div></details>
+    <details><summary>Posso entregar o voto em mãos no Consulado ou no Sportello de Vitória?</summary><div class="ans">
+      <p>O Consulado não informou essa opção para esta eleição. Até que informe, use o envelope selado e os Correios.</p></div></details>
+    <details><summary>A eleição é presencial no dia 4/12?</summary><div class="ans">
+      <p>Não. O voto é todo pelo correio. 4 de dezembro é o último dia para o envelope chegar ao Consulado.</p></div></details>
+  </div>
+
+  <div class="group" data-g="aire"><h3>Quem pode votar, AIRE e Fast It</h3>
+    <details><summary>Quem pode votar?</summary><div class="ans">
+      <p>Italianos maiores de 18 anos, com AIRE e residência no RJ ou ES há pelo menos 6 meses (até 4/12/2026), que pediram a inscrição na lista eleitoral até 4/11/2026.</p></div></details>
+    <details><summary>Não pedi a cédula até 4/11. Ainda dá?</summary><div class="ans">
+      <p>Não. Só recebe envelope quem pediu. Você ainda pode ajudar lembrando amigos e parentes que pediram de ficar de olho na caixa de correio.</p></div></details>
+    <details><summary>Pedi pelo Fast It. Está valendo?</summary><div class="ans">
+      <p>Talvez não. Vários membros receberam e-mail do Consulado dizendo que o pedido pelo Fast It deu problema. Se você só pediu por lá e não teve confirmação, escreva ao e-mail eleitoral perguntando se seu nome consta na lista.</p></div></details>
+    <details><summary>Pedi por e-mail e não recebi resposta. Está ok?</summary><div class="ans">
+      <p>O Consulado nem sempre confirma. Se quiser certeza, pergunte pelo mesmo e-mail se seu nome consta na lista.</p></div></details>
+    <details><summary>Tenho menos de 6 meses de AIRE. Posso votar?</summary><div class="ans">
+      <p>Pela regra, não. Se pediu mesmo assim, o Consulado pode recusar.</p></div></details>
+    <details><summary>Meu AIRE aparece "in corso", mas o Comune já mandou a inscrição.</summary><div class="ans">
+      <p>O Fast It é atualizado à mão. Encaminhe o e-mail do Comune para o setor de Anagrafe pedindo a atualização:</p>
+      <div class="email"><code id="em2">anagrafe.riodejaneiro@esteri.it</code><button class="btn small" type="button" data-copy="em2">Copiar</button></div></div></details>
+    <details><summary>Preciso de passaporte ou CIE para votar?</summary><div class="ans">
+      <p>Não. O que conta é o AIRE e o pedido de inscrição.</p></div></details>
+    <details><summary>Votar é obrigatório? Tem multa?</summary><div class="ans">
+      <p>Não é obrigatório e não há multa. Muitos no grupo acham importante votar para mostrar que a comunidade é ativa, mas isso é opinião, não regra.</p></div></details>
+  </div>
+
+  <div class="group" data-g="boato"><h3>Informações que precisam de ajuste</h3>
+    <details><summary>O que circulou e o que vale de verdade</summary><div class="ans">
+      <p>Ninguém errou por mal: as regras do Comites são diferentes das outras eleições.</p>
+      <div class="tbl"><table><thead><tr><th>Circulou</th><th>Vale</th></tr></thead><tbody>
+        <tr><td>"Não há chapa, o voto é na pessoa."</td><td>Voto na lista, com até 4 nomes dela.</td></tr>
+        <tr><td>"Você escolhe 3 nomes."</td><td>São <b>até 4</b>.</td></tr>
+        <tr><td>"O Comites tem 16 conselheiros."</td><td>São <b>12</b>. Cada lista tem 16 candidatos.</td></tr>
+        <tr><td>"Só vota quem tem passaporte."</td><td>Vota quem tem 6 meses de AIRE e pediu até 4/11.</td></tr>
+        <tr><td>"Pedir pelo Fast It basta."</td><td>Falhou para vários; confirme por e-mail.</td></tr>
+      </tbody></table></div></div></details>
+    <details><summary>O Comites muda a lei da cidadania ou acelera passaporte?</summary><div class="ans">
+      <p>Não. Ele não faz lei, não emite documento e não decide processo. Pode cobrar, propor, orientar e ser ponte com o Consulado. Desconfie de qualquer candidato, de qualquer lista, que prometa o contrário.</p></div></details>
+  </div>
+
+  <p class="empty" id="empty" hidden>Nenhuma pergunta com esse termo. Tente outra palavra ou pergunte no grupo.</p>
+  </div>
+</section>
+
+<section class="copybox" aria-labelledby="c1">
+  <h2 id="c1">Resumo para mandar no WhatsApp</h2>
+  <p>Copie e cole para quem ainda não leu.</p>
+  <button class="btn" type="button" id="copyWa">Copiar resumo</button>
+  <span id="copied" role="status" style="margin-left:10px;color:var(--verde);font-weight:700"></span>
+</section>
+
+<footer>
+  <b>Fontes oficiais</b>
+  <ul>
+    <li><a href="https://consriodejaneiro.esteri.it/wp-content/uploads/2026/10/LISTE-COMITES-PER-BACHECA-E-SITO-2026.pdf" target="_blank" rel="noopener">Lista de candidatos – Consulado do Rio</a></li>
+    <li><a href="https://consriodejaneiro.esteri.it/it/news/dal_consolato/2026/09/indizione-delle-elezioni-dei-comites-3-settembre-2026/" target="_blank" rel="noopener">Convocação: eleição em 4/12/2026, comitê de 12 membros</a></li>
+    <li><a href="https://consriodejaneiro.esteri.it/it/news/dal_consolato/2026/08/elezione-dei-comitati-degli-italiani-allestero-comites-2026-modalita-per-la-richiesta-di-iscrizione-nellelenco-elettorale/" target="_blank" rel="noopener">Inscrição na lista eleitoral</a></li>
+    <li><a href="https://www.parlamento.it/parlam/leggi/03286l.htm" target="_blank" rel="noopener">Lei 286/2003 (regras do Comites)</a></li>
+  </ul>
+  <p>Atualizado em 9/11/2026.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  // contagem regressiva até 4/12/2026
+  var el=document.getElementById('count');
+  var d=Math.ceil((new Date('2026-12-04T23:59:00-03:00')-new Date())/864e5);
+  if(d>0) el.textContent='Faltam '+d+' dia'+(d>1?'s':'')+' para o prazo final.';
+
+  var q=document.getElementById('q'), chips=[].slice.call(document.querySelectorAll('.chips button'));
+  var groups=[].slice.call(document.querySelectorAll('.group')), empty=document.getElementById('empty'), filt='all';
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+  function apply(){
+    var t=norm(q.value.trim()), any=false;
+    groups.forEach(function(g){
+      var gOk=filt==='all'||g.dataset.g===filt, shown=0;
+      g.querySelectorAll('details').forEach(function(d){
+        var ok=gOk&&(!t||norm(d.textContent).indexOf(t)>-1);
+        d.hidden=!ok; if(ok)shown++;
+        if(t&&ok)d.open=true;
+      });
+      g.hidden=!shown; if(shown)any=true;
+    });
+    empty.hidden=any;
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(function(b){b.addEventListener('click',function(){
+    filt=b.dataset.f; chips.forEach(function(c){c.setAttribute('aria-pressed',c===b)}); apply();
+  })});
+
+  function copy(text,done){
+    var ok=function(){done&&done()};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok,function(){fallback(text);ok()});
+    } else {fallback(text);ok()}
+  }
+  function fallback(text){var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove()}
+
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    copy(document.getElementById(b.dataset.copy).textContent,function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1800)});
+  })});
+
+  var wa=['🇮🇹 COM.IT.ES. RJ/ES 2026 – COMO VOTAR','',
+  '📬 O envelope chega pelo correio a partir de meados de novembro. Só recebe quem pediu até 4/11.','',
+  '🗳️ PASSO A PASSO','1. Marque UMA lista.','2. Se quiser, marque até 4 nomes DESSA lista.','3. Cédula no envelope pequeno, feche.',
+  '4. Envelope pequeno + canhoto do certificado no envelope selado.','5. Poste o quanto antes. Tem que CHEGAR ao Consulado até 4/12.','',
+  '❌ Anula: assinar ou escrever qualquer coisa na cédula, ou marcar duas listas.','',
+  '🤝 SUGESTÃO DA CHAPA (não é obrigação)','Lista 1 – MAIB, preferências:','• Nº 1 a 150 da nossa lista: 3, 6, 7 e 9','• Nº 151 em diante: 3, 6, 7 e 12',
+  'Marcar só a Lista 1, ou outros nomes dela, também ajuda. O voto é seu e é secreto.','',
+  '📭 Não chegou até ~20/11 ou veio faltando algo? Avise no grupo e escreva para riodejaneiro.elettorale@esteri.it'].join('\n');
+  document.getElementById('copyWa').addEventListener('click',function(){
+    copy(wa,function(){var s=document.getElementById('copied');s.textContent='Copiado!';setTimeout(function(){s.textContent=''},2500)});
+  });
+})();
+</script>
+</body>
+</html>

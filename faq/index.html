@@ -132,7 +132,7 @@ footer ul{padding-left:18px;margin:6px 0}
   <h1>Seu envelope de votação está a caminho. Vamos votar sem errar?</h1>
   <p>Tudo o que o grupo perguntou nos últimos dois meses, respondido com as regras oficiais do Consulado. Leva 3 minutos. O voto é seu, livre e secreto.</p>
   <div class="stamp" role="note"><span>O voto precisa <u>chegar</u> ao Consulado até</span><b>4/12</b></div>
-  <p class="count" id="count"></p>
+  <p class="count"><span id="updated"></span> <span id="count"></span></p>
 </header>
 
 <section class="quick" aria-labelledby="q1">
@@ -339,13 +339,16 @@ footer ul{padding-left:18px;margin:6px 0}
     <li><a href="https://consriodejaneiro.esteri.it/it/news/dal_consolato/2026/08/elezione-dei-comitati-degli-italiani-allestero-comites-2026-modalita-per-la-richiesta-di-iscrizione-nellelenco-elettorale/" target="_blank" rel="noopener">Inscrição na lista eleitoral</a></li>
     <li><a href="https://www.parlamento.it/parlam/leggi/03286l.htm" target="_blank" rel="noopener">Lei 286/2003 (regras do Comites)</a></li>
   </ul>
-  <p>Atualizado em 9/11/2026.</p>
 </footer>
 </div>
 
 <script>
 (function(){
   // contagem regressiva até 4/12/2026
+  var up=document.getElementById('updated');
+  var lm=new Date(document.lastModified);
+  if(isNaN(lm)||lm.getFullYear()<2026) lm=new Date();
+  up.textContent='Atualizado em '+lm.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'})+'.';
   var el=document.getElementById('count');
   var d=Math.ceil((new Date('2026-12-04T23:59:00-03:00')-new Date())/864e5);
   if(d>0) el.textContent='Faltam '+d+' dia'+(d>1?'s':'')+' para o prazo final.';
